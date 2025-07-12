@@ -1,0 +1,12 @@
+name: Environment variables
+on: push
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: main                # 잡(Job) 수준에서 환경 변수 정의
+    steps:
+      - run: echo "${BRANCH}"     # 셸 명령어에서 잡 수준 환경 변수 참조
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}  # env 컨텍스트를 통해 잡 수준 환경 변수 참조

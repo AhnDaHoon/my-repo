@@ -1,0 +1,12 @@
+name: Override environment variables
+on: push
+env:
+  EXAMPLE: Defined by workflow level     # 워크플로우 레벨에서 환경 변수 정의
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${EXAMPLE}"           # 워크플로우 레벨의 환경 변수 출력
+      - env:
+          EXAMPLE: Defined by step level # 스텝 레벨에서 환경 변수 재정의 (오버라이드)
+        run: echo "${EXAMPLE}"           # 오버라이드된 환경 변수 출력

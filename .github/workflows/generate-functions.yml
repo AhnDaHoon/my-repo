@@ -1,0 +1,10 @@
+name: Generate functions
+on: push
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - run: printenv | grep '_FUNC'
+        env:
+          FORMAT_FUNC: ${{ format('{0}, {1}.', 'Hi', 'world') }}  # "Hi, world." 로 포맷팅
+          JOIN_FUNC: ${{ join(github.event.*.html_url, ', ') }}   # github.event 내 모든 html_url을 콤마로 연결

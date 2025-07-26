@@ -1,0 +1,9 @@
+name: Annotation
+on: push
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "::error::This is an error"    # 에러 레벨의 어노테이션
+      - run: echo "::warning::This is a warning" # 경고 레벨의 어노테이션
+      - run: echo "::notice::This is a notice"   # 공지 레벨의 어노테이션
